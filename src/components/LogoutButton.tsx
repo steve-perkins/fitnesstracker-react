@@ -1,19 +1,16 @@
-import React from 'react';
-import { useAuth } from '../context/AuthContext';
+import React from "react";
+
+import { useAuth } from "../context/useAuth.ts";
 
 const LogoutButton: React.FC = () => {
   const { logout } = useAuth();
 
   const handleLogout = () => {
     logout();
-    console.log('User logged out');
+    console.log("User logged out");
   };
 
-  return (
-    <button onClick={handleLogout}>
-      Logout
-    </button>
-  );
+  return <button onClick={handleLogout}>Logout</button>;
 };
 
 export default LogoutButton;
