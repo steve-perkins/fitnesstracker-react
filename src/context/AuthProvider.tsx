@@ -1,4 +1,4 @@
-import React, {ReactNode, useEffect, useState} from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext";
 
 interface AuthProviderProps {
@@ -13,17 +13,17 @@ interface AuthProviderProps {
  * @param children
  * @constructor
  */
-export const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [token, setTokenState] = useState<string | null>(() => {
-    return localStorage.getItem('token');
+    return localStorage.getItem("token");
   });
 
   const setToken = (token: string | null) => {
     setTokenState(token);
     if (token) {
-      localStorage.setItem('token', token);
+      localStorage.setItem("token", token);
     } else {
-      localStorage.removeItem('token');
+      localStorage.removeItem("token");
     }
   };
 
@@ -32,14 +32,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
   };
 
   useEffect(() => {
-    const storedToken = localStorage.getItem('token');
+    const storedToken = localStorage.getItem("token");
     if (storedToken) {
       setToken(storedToken);
     }
   }, []);
 
   return (
-    <AuthContext.Provider value={{token, setToken, logout}}>
+    <AuthContext.Provider value={{ token, setToken, logout }}>
       {children}
     </AuthContext.Provider>
   );

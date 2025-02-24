@@ -1,6 +1,5 @@
-import { useEffect } from 'react';
-
-import {useAuth} from "../context/useAuth.ts";
+import { useAuth } from "../context/useAuth.ts";
+import { useEffect } from "react";
 
 const Profile = () => {
   const { token } = useAuth();
@@ -18,7 +17,7 @@ const Profile = () => {
       //   .then(data => console.log(data))
       //   .catch(error => console.error('Error:', error));
 
-      console.log('Making API calls with token:', token);
+      console.log("Making API calls with token:", token);
     }
   }, [token]);
 
