@@ -1,4 +1,3 @@
-import {useAuth} from "./context/AuthContext.tsx";
 import {
   AppBar,
   BottomNavigation, BottomNavigationAction,
@@ -24,6 +23,7 @@ import Exercise from "./components/Exercise.tsx";
 import Report from "./components/Report.tsx";
 import GoogleLoginButton from "./components/GoogleLoginButton.tsx";
 import LogoutButton from "./components/LogoutButton.tsx";
+import {useAuth} from "./context/useAuth.ts";
 
 function App() {
   const { token } = useAuth();
