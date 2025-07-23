@@ -1,3 +1,6 @@
+// @ts-expect-error unused import
+import React from "react";
+
 const Report = () => {
   return (
     <div>

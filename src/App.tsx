@@ -12,18 +12,20 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { NavLink, Route, Routes } from "react-router-dom";
+import { NavLink, Route, Routes, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AssessmentIcon from "@mui/icons-material/Assessment";
 import Exercise from "./components/Exercise.tsx";
-import FastFoodIcon from "@mui/icons-material/FastFood";
+import FastfoodIcon from "@mui/icons-material/Fastfood";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import Food from "./components/Food.tsx";
 import GoogleLoginButton from "./components/GoogleLoginButton.tsx";
 import LogoutButton from "./components/LogoutButton.tsx";
 import MenuIcon from "@mui/icons-material/Menu";
 import Profile from "./components/Profile.tsx";
+// @ts-expect-error unused import
+import React from "react";
 import Report from "./components/Report.tsx";
 import { useAuth } from "./context/useAuth.ts";
 
@@ -33,6 +35,16 @@ function App() {
   const isDesktop = useMediaQuery("(min-width:600px)");
   const [appBarHeight, setAppBarHeight] = useState(0);
   const appBarRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+  const prevTokenRef = useRef(token);
+
+  useEffect(() => {
+    if (!prevTokenRef.current && token) {
+      // Token transitioned from falsy to truthy (just logged in)
+      void navigate("/profile", { replace: true });
+    }
+    prevTokenRef.current = token;
+  }, [token, navigate]);
 
   useEffect(() => {
     const updateAppBarHeight = () => {
@@ -145,7 +157,7 @@ function App() {
                   />
                   <BottomNavigationAction
                     label="Food"
-                    icon={<FastFoodIcon />}
+                    icon={<FastfoodIcon />}
                     component={NavLink}
                     to="/food"
                   />
