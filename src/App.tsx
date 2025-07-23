@@ -17,7 +17,7 @@ import { useEffect, useRef, useState } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AssessmentIcon from "@mui/icons-material/Assessment";
 import Exercise from "./components/Exercise.tsx";
-import FastFoodIcon from "@mui/icons-material/FastFood";
+import FastfoodIcon from "@mui/icons-material/Fastfood";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import Food from "./components/Food.tsx";
 import GoogleLoginButton from "./components/GoogleLoginButton.tsx";
@@ -157,7 +157,7 @@ function App() {
                   />
                   <BottomNavigationAction
                     label="Food"
-                    icon={<FastFoodIcon />}
+                    icon={<FastfoodIcon />}
                     component={NavLink}
                     to="/food"
                   />
