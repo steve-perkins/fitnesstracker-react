@@ -1,3 +1,5 @@
+// @ts-expect-error unused import
+import React from "react";
 import { useAuth } from "../context/useAuth.ts";
 import { useEffect } from "react";
 
